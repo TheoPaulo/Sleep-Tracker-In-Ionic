@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar">
+      <ion-button class="back-button" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-title>Log Sleepiness</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment id="sleepiness-selector" (ionChange)="getSelectedValue($event)">
+    <ion-segment-button *ngFor="let num of stanfordScale; let i = index" [value]="i+1">
+      <ion-label>{{i+1}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <p class="sleepiness-detail-text">
+    {{stanfordScale[selected_value-1]}}
+  </p>
+
+  <ion-item id="error-message" *ngIf="selected_value == 0">
+    Please select a number to describe how sleepy you are.
+  </ion-item>
+
+  <div class="save-button">
+    <ion-button (click)="saveData()">Save</ion-button>
+  </div>
+  
+
+
+</ion-content>

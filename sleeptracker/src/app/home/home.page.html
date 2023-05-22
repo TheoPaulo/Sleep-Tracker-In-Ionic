@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Overnight Sleep Tracker
+    </ion-title>
+    <!-- <ion-icon name="add-outline" slot = "end" size = "large"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sleep Tracker</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list *ngFor="let sleepData of allOvernightData.reverse()">
+    <app-overnight-sleep-card [sleep_data]="sleepData"></app-overnight-sleep-card>
+  </ion-list>
+
+  <div id="no-content" *ngIf="allOvernightData.length === 0">
+    <strong>Nothing to see here</strong>
+    <p>Start logging sleep top right</p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <!-- <ion-fab-button color="primary" (click)="event_test()" [activated]="add_pressed"> -->
+    <ion-fab-button color = "secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="goToSleepinessLog()">
+        <ion-icon name="sunny-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="goToOvernightLog()">
+        <ion-icon name="moon-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-popover *ngIf="add_pressed">
+    <ng-template>
+      test
+    </ng-template>
+  </ion-popover>
+
+</ion-content>
+
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="overnightSleepPage" size="small">
+    <ion-label>Overnight Sleep</ion-label>
+    <ion-icon name="moon-outline"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button tab="sleepinessPage" size="small" (click)="goToSleepinessMenu()">
+    <ion-label>Sleepiness</ion-label>
+    <ion-icon name="sunny-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

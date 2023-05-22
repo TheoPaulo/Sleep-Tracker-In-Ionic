@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleepiness Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<ion-list *ngFor="let sleepData of allSleepinessData.reverse()">
+  <app-sleepiness-card [sleep_data]="sleepData"></app-sleepiness-card>
+</ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <!-- <ion-fab-button color="primary" (click)="event_test()" [activated]="add_pressed"> -->
+    <ion-fab-button color = "secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="goToSleepinessLog()">
+        <ion-icon name="sunny-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="goToOvernightLog()">
+        <ion-icon name="moon-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="overnightSleepPage" size="small" (click)="goToOvernightMenu()">
+    <ion-label>Overnight Sleep</ion-label>
+    <ion-icon name="moon-outline"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button tab="sleepinessPage" size="small" (click)="goToSleepinessMenu()">
+    <ion-label>Sleepiness</ion-label>
+    <ion-icon name="sunny-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

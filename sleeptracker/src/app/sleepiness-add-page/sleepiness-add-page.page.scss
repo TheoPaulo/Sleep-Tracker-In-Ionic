@@ -1,0 +1,26 @@
+ion-segment-button {
+    min-width: 10%;
+}
+
+ion-segment{
+    padding: 10px;
+    padding-top:25px;
+}
+
+.toolbar{
+    display: flex;
+    justify-content: center;
+}
+
+.sleepiness-detail-text{
+    text-align: center;
+}
+
+.save-button {
+    width: 45vh;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}

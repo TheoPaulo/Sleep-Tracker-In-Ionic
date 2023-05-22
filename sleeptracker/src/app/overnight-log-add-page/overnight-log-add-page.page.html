@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>Log Overnight Sleep</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="overnight-date" id="start-date-log">
+  <p>Sleep Start</p>  
+
+  <ion-item>
+    <ion-input [value]="shownStartDateValue" placeholder="Start Date and Time" id="open-start-date-input"></ion-input>
+    <ion-popover trigger="open-start-date-input" show-backdrop="false">
+      <ng-template>
+        <ion-datetime
+          #popoverStartDatetime
+          (ionChange)="shownStartDateValue = formatStartDate(popoverStartDatetime.value)"
+        >
+        <ion-button (click)="confirm()">Good to go!</ion-button>
+      </ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+
+  </div>
+
+  <div class="overnight-date" id="end-date-log">
+    <p>Sleep end</p>  
+  
+    <ion-item>
+      <ion-input [value]="shownEndDateValue" placeholder="End Date and Time" id="open-end-date-input"></ion-input>
+      <ion-popover trigger="open-end-date-input" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            #popoverEndDatetime
+            (ionChange)="shownEndDateValue = formatEndDate(popoverEndDatetime.value)"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+  
+    </div>
+
+    <ion-item id="error-message" *ngIf="startDateValue >= endDateValue">
+      You didn't wake up before you went to sleep, right?
+    </ion-item>
+
+  <ion-button class="save-button" (click)="saveData()">Save</ion-button>
+</ion-content>
